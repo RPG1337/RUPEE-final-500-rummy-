@@ -89,7 +89,7 @@ public:
     }
 
 
-    //# Converts rank to an integer for sorting
+    // Converts rank to an integer for sorting
     static int rankToInt(const string& rank) {
         if (rank == "2") return 2;
         if (rank == "3") return 3;
@@ -103,11 +103,11 @@ public:
         if (rank == "J") return 11;
         if (rank == "Q") return 12;
         if (rank == "K") return 13;
-        if (rank == "A") return 14;  //# Ace as highest card in sequence
-        return -1;  //# safty
+        if (rank == "A") return 14;  // Ace as highest card in sequence
+        return -1;  // safty
     }
 
-    //# Method to display matches
+    // Method to display matches
     void displayMatches() {
         cout << "Matches: ";
         Card* temp = head;
@@ -126,7 +126,7 @@ public:
         shuffleDeck();
     }
 
-    //# Initializes the deck with 52 standard cards
+    // Initializes the deck with 52 standard cards
     void initializeDeck() {
         string suits[] = { "S", "C", "H", "D" };
         string ranks[] = { "2", "3", "4", "5", "6", "7", "8", "9", "10","J", "Q", "K", "A" };
@@ -138,7 +138,7 @@ public:
         }
     }
 
-    //# Shuffles the deck using linked list-based swapping
+    // Shuffles the deck using linked list-based swapping
     void shuffleDeck() {
         int deckSize = size();
         if (deckSize <= 1) return;  //# No need to shuffle a deck with 1 or fewer cards
@@ -146,7 +146,7 @@ public:
         srand(static_cast<unsigned>(time(0)));
 
         for (int i = 0; i < deckSize; ++i) {
-            //# Select two random positions in the linked list
+            // Select two random positions in the linked list
             int pos1 = rand() % deckSize;
             int pos2 = rand() % deckSize;
             if (pos1 != pos2) {
@@ -156,7 +156,7 @@ public:
     }
 
 private:
-    //# Helper function to swap two nodes at specified positions
+    // Helper function to swap two nodes at specified positions
     void swapNodes(int pos1, int pos2) {
         if (pos1 == pos2) return;
 
@@ -205,7 +205,7 @@ class PlayerHand : public LinkedList {
 public:
     LinkedList matches; //# New linked list to store matches
 
-    //# Add the extractMatches method to return actual matches
+    // Add the extractMatches method to return actual matches
     LinkedList extractMatches() {
         LinkedList extractedMatches;
         Card* current = matches.head;
@@ -215,7 +215,7 @@ public:
             matchCard->next = nullptr;
             extractedMatches.addCard(matchCard);
         }
-        matches.head = nullptr; //# Clear the matches list
+        matches.head = nullptr; // Clear the matches list
         return extractedMatches;
     }
 
@@ -344,7 +344,7 @@ public:
             current = current->next;
         }
     }
-    //# checks rank
+    // checks rank
     void moveToMatches(const string& rank) {
         Card* current = head;
         Card* previous = nullptr;
@@ -447,7 +447,7 @@ public:
     }
 };
 bool isGameEnd(const PlayerHand& player1, const PlayerHand& player2, const Deck& deck) {
-    //# Game ends if either player has emptied their hand or if the deck is empty
+    // Game ends if either player has emptied their hand or if the deck is empty
     return player1.isEmpty() || player2.isEmpty() || deck.isEmpty();
 }
 
@@ -660,3 +660,4 @@ int main() {
     cout << "Player 2 Score: " << player2Score << endl;
     return 0;
 }
+
